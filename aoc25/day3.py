@@ -15,7 +15,7 @@ if __name__ == "__main__":
             while len(jlt) > minl and jlt[-1] < n:
                 jlt.pop()
             jlt.append(n)
-        
+
         while len(jlt) > NUM_BATTERIES:
             jlt.pop()
 

@@ -1,8 +1,9 @@
 def valid(id: str) -> int:
-    mid = len(id)//2
+    mid = len(id) // 2
     if id[mid:] == id[:mid]:
         return int(id)
     return 0
+
 
 def repeats(id):
     # print(f"checking:{id} len={len(id)}")
@@ -13,7 +14,7 @@ def repeats(id):
             # print(f"pattern: {pattern}")
             repeats = True
             for i in range(step, len(id), step):
-                if pattern != id[i:i+step]:
+                if pattern != id[i : i + step]:
                     # print(f"no match at step {step}")
                     repeats = False
                     break
@@ -21,6 +22,7 @@ def repeats(id):
                 # print(f"invalid id: {id}")
                 return int(id)
     return 0
+
 
 if __name__ == "__main__":
 
@@ -30,7 +32,7 @@ if __name__ == "__main__":
     total = 0
     for pair in puzzle_input.split(","):
         ids = pair.split("-")
-        for id in range(int(ids[0]), int(ids[1])+1):
+        for id in range(int(ids[0]), int(ids[1]) + 1):
             total += valid(str(id))
 
     print(total)

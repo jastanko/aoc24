@@ -10,8 +10,8 @@ if __name__ == "__main__":
         factor = 1
         if rot[0] == "L":
             factor = -1
-        dialp = dial + delta*factor
-        clicks = abs(dialp//100)
+        dialp = dial + delta * factor
+        clicks = abs(dialp // 100)
         if dial == 0 and factor == -1 and clicks > 0:
             clicks -= 1
         dial = dialp % 100
