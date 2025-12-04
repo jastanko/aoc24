@@ -1,3 +1,5 @@
+NUM_BATTERIES = 12
+
 if __name__ == "__main__":
 
     with open(0) as data:
@@ -6,19 +8,24 @@ if __name__ == "__main__":
     total = 0
     for bank in puzzle_input.splitlines():
         bank.strip()
-        b1 = b2 = 0
-        for i in range(0, len(bank)-1):
+        jlt = []
+        for i in range(0, len(bank)):
             n = int(bank[i])
-            if n > b1:
-                b1 = n
-                b2 = 0
-            elif n > b2:
-                b2 = n
-            # print(f"{b1}{b2}")
+            minl = max(0, NUM_BATTERIES + i - len(bank))
+            while len(jlt) > minl and jlt[-1] < n:
+                jlt.pop()
+            jlt.append(n)
+        
+        while len(jlt) > NUM_BATTERIES:
+            jlt.pop()
+
+        # print(jlt)
         n = int(bank[-1])
-        if n > b2:
-            b2 = n
-        joltage = b1*10 + b2
+        joltage = 0
+        place = 1
+        while len(jlt) > 0:
+            joltage += jlt.pop() * place
+            place *= 10
         # print(joltage)
         total += joltage
 
