@@ -5,8 +5,8 @@ if __name__ == "__main__":
     with open(0) as data:
         puzzle_input = data.read().splitlines()
 
-    symbols = puzzle_input.pop().split(" ")
-    symbols = list(filter(lambda c: len(c) > 0, symbols))
+    symbols = puzzle_input.pop().split()
+    # symbols = list(filter(lambda c: len(c) > 0, symbols))
 
     matrix = list()
     numlist = list()
