@@ -30,7 +30,7 @@ if __name__ == "__main__":
     pairs = [(x, y) for i, x in enumerate(boxes) for y in boxes[i + 1 :]]
     pairs.sort(key=strline_distance)
 
-    for p1, p2 in pairs[:NUM_CONNECTIONS]:
+    for p1, p2 in pairs:  # [:NUM_CONNECTIONS]:
         c1 = find_circuit(p1)
         c2 = find_circuit(p2)
         # print(f"--- {p1}:{c1} <--> {p2}:{c2}")
@@ -44,6 +44,10 @@ if __name__ == "__main__":
         elif c1 != c2:
             circuits.remove(c1)
             circuits.remove(c2)
-            circuits.append(c1.union(c2))
+            c3 = c1.union(c2)
+            circuits.append(c3)
+        if len(circuits) == 1 and len(circuits[0]) == len(puzzle_input):
+            print(f"distance to wall: {p1[0]*p2[0]}")
+            break
     clist = sorted(map(len, circuits))
-    print(clist[-1] * clist[-2] * clist[-3])
+    # print(clist[-1] * clist[-2] * clist[-3])
